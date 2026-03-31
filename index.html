@@ -143,20 +143,22 @@ src="https://www.facebook.com/tr?id=26016422008053520&ev=PageView&noscript=1"
   </div>
 
   <script>
-    let time = 55;
-    const timer = document.getElementById('timer');
+  let time = 55;
+  const timer = document.getElementById('timer');
 
-    setInterval(() => {
-      time--;
-      timer.innerText = time;
-      if(time <= 0) {
-        fbq('track','Subscribe');
-        setTimeout(function(){
-          window.location.href = "https://t.me/+6BOG7VDlYEA5NWU9";
-      }
-    }, 300);
-      }
-  </script>
+  const countdown = setInterval(() => {
+    time--;
+    timer.innerText = time;
+
+    if (time <= 0) {
+      clearInterval(countdown); // timer stop
+      fbq('track','Subscribe'); // Meta event
+      setTimeout(function () {
+        window.location.href = "https://t.me/+6BOG7VDlYEA5NWU9";
+      }, 300);
+    }
+  }, 1000);
+</script>
 
 </body>
 </html>
